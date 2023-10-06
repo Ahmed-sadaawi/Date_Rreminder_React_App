@@ -1,38 +1,23 @@
 /* بسم الله الرحمن الرحيم */
 
-import {Container, Row, Col, Button, Image} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import "./App.css";
+import {useState} from "react";
+import {persons} from "../../data";
+import DatesCount from "../DatesCount/DatesCount";
+import DatesList from "../DatesList/DatesList";
+import DatesAction from "../DatesAction/DatesAction";
+
 
 function App() {
+    const [personDates, setPersonDates] = useState(persons);
+
   return (
     <div className="App">
-        <Container>
-            <h2 className="my-5">لديك ٤ مواعيد اليوم</h2>
-            <Row className="rectangle">
-                <Col>
-
-                <Row>
-                    <Col>
-                        <Image className="img"
-                            src="https://static.vecteezy.com/system/resources/thumbnails/022/448/286/small/save-earth-day-poster-environment-day-nature-green-ai-generative-glossy-background-images-tree-and-water-free-photo.jpg"
-                            roundedCircle
-                        />
-                    </Col>
-
-                    <Col>
-                        <h4>محمود ربيع</h4>
-                    </Col>
-
-                    <Col>
-                        <p>10:30 PM</p>
-                    </Col>
-                </Row>
-                </Col>
-            </Row>
-            <Row className="justify-content-between my-3">
-                <Col sm="2" as={Button}>مسح البيانات</Col>
-                <Col sm="2" as={Button}>عرض الكل</Col>
-            </Row>
+        <Container className="py-5">
+            <DatesCount personDates={personDates} />
+            <DatesList personDates={personDates} />
+            <DatesAction setPersonDates={setPersonDates}/>
         </Container>
     </div>
   );
